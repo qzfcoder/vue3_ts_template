@@ -57,7 +57,9 @@ npm i prettier -D
 ```
 
 ```
-
+## git husky和seint，来保证代码提交格式的正确性
+自动配置命令
+npx husky-init && npm install
 ## Project setup
 
 ```
