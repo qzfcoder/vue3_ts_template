@@ -60,6 +60,16 @@ npm i prettier -D
 ## git husky和seint，来保证代码提交格式的正确性
 自动配置命令
 npx husky-init && npm install
+
+## npm install commitizen -D
+npx commitizen init cz-conventional-changelog --save-dev --save-exact
+
+
+## npm i @commitlint/config-conventional @commitlint/cli -D
+限制commit 提交
+npx husky add .husky/commit-msg "npx --no-install commitlint --edit $1"
+
+
 ## Project setup
 
 ```
