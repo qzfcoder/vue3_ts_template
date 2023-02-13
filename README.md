@@ -48,6 +48,16 @@ npm i prettier -D
 
 "prettier": "prettier --write ." 该命令，将所有需要格式化的文件，度格式化处理
 
+## .eslintrc.js 来配置 eslint 规则
+
+安装插件 ESLint
+
+安装 npm i eslint-plugin-prettier eslint-config-prettier -D，来处理 eslint 和 prettier 两者相互兼容，安装项目的时候默认安装了的
+
+```
+
+```
+
 ## Project setup
 
 ```
