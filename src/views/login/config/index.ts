@@ -1,18 +1,20 @@
 import { IForm } from '@/baseUi/form/type'
-
+import rule from '@/utils/rule'
 export const modalForm: IForm = {
   formItems: [
     {
       field: 'name',
       type: 'password',
       label: '用户名',
-      placeholder: '请输入用户名'
+      placeholder: '请输入用户名',
+      rules: rule(true)
     },
     {
       field: 'select',
       type: 'select',
       label: 'select',
       placeholder: '请选择',
+      rules: rule(true),
       otherOptions: {
         size: 'large'
       },

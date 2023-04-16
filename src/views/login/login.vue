@@ -1,12 +1,14 @@
 <template>
   <br />
-  <t-form v-bind="modalFormConfig" v-model="formData"></t-form>
+  <t-form ref="tFormRef" v-bind="modalFormConfig" v-model="formData"></t-form>
+  <el-button @click="saveHandle">保存</el-button>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import TForm from '@/baseUi/form/index.vue'
 import { modalForm } from './config/index'
+
 export default defineComponent({
   components: {
     TForm
@@ -27,8 +29,15 @@ export default defineComponent({
     //   })
     //   return modalForm
     // })
+    const tFormRef = ref()
+    const saveHandle = async () => {
+      let isBoolean = await tFormRef.value?.validateHandle()
+      console.log(tFormRef.value, isBoolean)
+    }
     return {
       formData,
+      tFormRef,
+      saveHandle,
       modalFormConfig
     }
   }

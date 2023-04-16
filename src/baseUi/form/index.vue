@@ -1,6 +1,11 @@
 <template>
   <div>
-    <el-form :label-width="labelWidth">
+    <el-form
+      ref="ruleFormRef"
+      v-if="formData"
+      :model="formData"
+      :label-width="labelWidth"
+    >
       <el-row>
         <template v-for="item in formItems" :key="item.label">
           <el-col v-bind="colLayout">
@@ -8,10 +13,11 @@
               v-if="!item.isHidden"
               :rules="item.rules"
               :style="itemStyle"
+              :prop="item.field"
             >
               <template v-slot:label>
                 <i class="el-icon-edit"></i>
-                活动名称
+                {{ item.label }}
               </template>
               <template
                 v-if="item.type === 'input' || item.type === 'password'"
@@ -58,11 +64,12 @@
         </template>
       </el-row>
     </el-form>
+    <!-- <el-button @click="validateHandle">validateHandle</el-button> -->
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, watch, PropType, ref } from 'vue'
+import { defineComponent, PropType, ref, onMounted } from 'vue'
 import { IFormItem } from './type'
 export default defineComponent({
   props: {
@@ -94,18 +101,28 @@ export default defineComponent({
       required: true
     }
   },
-  setup(props, { emit }) {
-    const formData = ref({ ...props.modelValue })
-    watch(
-      formData,
-      (newVal) => {
-        emit('update:modelValue', newVal)
-      },
-      {
-        deep: true
-      }
-    )
-    return { formData }
+  setup(props) {
+    const formData = ref()
+    onMounted(() => {
+      console.log(props.formItems)
+      let tem: any = {}
+      props.formItems.map((item) => {
+        tem[item.field] = item.defaultValue ?? ''
+        return item
+      })
+      formData.value = { ...tem }
+      console.log(formData.value)
+    })
+    const ruleFormRef = ref()
+    const validateHandle = () => {
+      if (!ruleFormRef.value) return
+      let res = (ruleFormRef.value as any)?.validate((valid: boolean) => {
+        console.log(valid, ruleFormRef.value)
+        return valid
+      })
+      return res
+    }
+    return { formData, ruleFormRef, validateHandle }
   }
 })
 </script>

@@ -12,6 +12,7 @@ export interface IFormItem {
   otherOptions?: any
   otherStyle?: any
   isHidden?: boolean
+  defaultValue?: any
 }
 
 export interface IForm {
