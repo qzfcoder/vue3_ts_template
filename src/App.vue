@@ -1,7 +1,8 @@
 <template>
   <h1>{{ $store.state.name }}</h1>
   <router-link to="/login">login</router-link>
-  <router-link to="/main">main</router-link>
+  <router-link to="/tableDemo">tableDemo</router-link>
+  <router-link to="/piniaDemo">piniaDemo</router-link>
   <router-view></router-view>
 </template>
 

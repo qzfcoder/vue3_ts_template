@@ -13,6 +13,8 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "element-plus": "^2.2.31",
+    "pinia": "^2.0.34",
+    "pinia-plugin-persist": "^1.0.0",
     "vue": "^3.0.0",
     "vue-router": "^4.0.13",
     "vuex": "^4.0.2"

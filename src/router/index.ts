@@ -10,8 +10,12 @@ const routes: RouteRecordRaw[] = [
     component: () => import('@/views/login/login.vue')
   },
   {
-    path: '/main',
-    component: () => import('@/views/main/main.vue')
+    path: '/tableDemo',
+    component: () => import('@/views/tableDemo/index.vue')
+  },
+  {
+    path: '/piniaDemo',
+    component: () => import('@/views/piniaDemo/index.vue')
   }
 ]
 

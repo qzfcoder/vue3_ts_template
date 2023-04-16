@@ -2,7 +2,7 @@
 // regex:RegExp 校验正则,不是正则时val作为result的值
 
 // msg:String 校验不通过的错误信息
-function valid(val: any, regex: any, msg: string) {
+function valid(val: any, regex: RegExp, msg: string) {
   return {
     result: regex instanceof RegExp ? regex.test(val) : !!val,
     errMsg: msg
@@ -90,10 +90,10 @@ const rules = {
     return valid(code, regex, '请输入正确的身份证号码')
   },
 
-  MobileOrPhone(val: string) {
-    const result = /^1\d{10}$/.test(val) || /^(0\d{2,3})?-?\d{7,8}$/.test(val)
-    return valid(result, null, '手机或电话号格式不正确')
-  },
+  // MobileOrPhone(val: string) {
+  //   const result = /^1\d{10}$/.test(val) || /^(0\d{2,3})?-?\d{7,8}$/.test(val)
+  //   return valid(result, null, '手机或电话号格式不正确')
+  // },
   test(code: any[]) {
     const regex = /[2]/
     return valid(code.length, regex, '请上传图片信息')
